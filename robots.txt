@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ricovar96.github.io/StepUp/sitemap.xml
