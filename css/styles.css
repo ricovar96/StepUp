@@ -472,7 +472,7 @@ main section {
   will-change: transform;
 }
 
-/* MODIFICACIÓN: Siempre mostrar 2 items por vez en todos los tamaños */
+/* MODIFICACIÓN: Siempre mostrar 2 items por vez en todos los tamaños, excepto en pantallas menores a 800px */
 .featured-services-item {
   min-width: 50%; /* MODIFICACIÓN */
   max-width: 50%; /* MODIFICACIÓN */
@@ -483,29 +483,13 @@ main section {
   transition: opacity 0.4s;
 }
 
-.carousel-controls {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-/* MODIFICACIÓN: estilos para los puntos del carrusel */
-.carousel-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #fff;
-  opacity: 0.4;
-  border: none;
-  margin: 0 6px;
-  cursor: pointer;
-  transition: opacity 0.2s, background 0.2s;
-  display: inline-block;
-}
-.carousel-dot.active {
-  background: var(--accent);
-  opacity: 1;
+@media (max-width: 799px) {
+  /* MODIFICACIÓN: En pantallas menores a 800px, mostrar solo un item */
+  .featured-services-item {
+    min-width: 100%;
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
 }
 
 /* Audience section */
@@ -878,4 +862,29 @@ footer {
 
 .menu-overlay.active {
     display: block;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* MODIFICACIÓN: estilos para los puntos del carrusel */
+.carousel-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.4;
+  border: none;
+  margin: 0 6px;
+  cursor: pointer;
+  transition: opacity 0.2s, background 0.2s;
+  display: inline-block;
+}
+.carousel-dot.active {
+  background: var(--accent);
+  opacity: 1;
 }

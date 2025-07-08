@@ -56,41 +56,60 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!carousel) return;
     const track = carousel.querySelector('.featured-services-track');
     const items = track.querySelectorAll('.featured-services-item');
-    // MODIFICACIÓN: Seleccionar los dots
-    const dots = carousel.querySelectorAll('.carousel-dot');
+    const controls = carousel.querySelector('.carousel-controls');
     let current = 0;
     let itemsPerView = 2;
-    const totalDots = dots.length;
+    let totalDots = 3;
 
     function updateItemsPerView() {
-      // MODIFICACIÓN: Siempre mostrar 2 items por vez
-      itemsPerView = 2;
+      if (window.innerWidth < 800) {
+        itemsPerView = 1;
+        totalDots = items.length; // 5 dots para 5 artículos
+      } else {
+        itemsPerView = 2;
+        totalDots = Math.ceil(items.length / 2); // 3 dots para 5 artículos
+      }
+    }
+
+    function renderDots() {
+      controls.innerHTML = '';
+      for (let i = 0; i < totalDots; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot';
+        dot.setAttribute('data-index', i);
+        dot.setAttribute('aria-label', `Ver artículos ${i + 1}${itemsPerView === 2 ? ' y ' + (i * 2 + 2) : ''}`);
+        dot.addEventListener('click', () => goTo(i));
+        controls.appendChild(dot);
+      }
     }
 
     function updateCarousel() {
       const offset = current * (100 / itemsPerView);
       track.style.transform = `translateX(-${offset}%)`;
-      // MODIFICACIÓN: Actualizar el estado activo de los dots
+      const dots = controls.querySelectorAll('.carousel-dot');
       dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === current);
       });
     }
 
     function goTo(index) {
-      current = Math.max(0, Math.min(index, totalDots - 1));
+      const maxIndex = Math.max(0, items.length - itemsPerView);
+      current = Math.max(0, Math.min(index, totalDots - 1, maxIndex));
       updateCarousel();
     }
 
-    // MODIFICACIÓN: Eventos para los dots
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => goTo(i));
-    });
-
-    window.addEventListener('resize', () => {
+    function onResize() {
+      const prevItemsPerView = itemsPerView;
       updateItemsPerView();
+      renderDots();
+      // Si cambiaron los dots, ajusta current
+      if (current > totalDots - 1) current = totalDots - 1;
       goTo(current);
-    });
+    }
+
+    window.addEventListener('resize', onResize);
     updateItemsPerView();
+    renderDots();
     goTo(0);
   })();
 });
