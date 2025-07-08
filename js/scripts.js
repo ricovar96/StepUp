@@ -49,4 +49,48 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+  // Carousel for featured services
+  (function () {
+    const carousel = document.querySelector('.featured-services-carousel');
+    if (!carousel) return;
+    const track = carousel.querySelector('.featured-services-track');
+    const items = track.querySelectorAll('.featured-services-item');
+    // MODIFICACIÓN: Seleccionar los dots
+    const dots = carousel.querySelectorAll('.carousel-dot');
+    let current = 0;
+    let itemsPerView = 2;
+    const totalDots = dots.length;
+
+    function updateItemsPerView() {
+      // MODIFICACIÓN: Siempre mostrar 2 items por vez
+      itemsPerView = 2;
+    }
+
+    function updateCarousel() {
+      const offset = current * (100 / itemsPerView);
+      track.style.transform = `translateX(-${offset}%)`;
+      // MODIFICACIÓN: Actualizar el estado activo de los dots
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === current);
+      });
+    }
+
+    function goTo(index) {
+      current = Math.max(0, Math.min(index, totalDots - 1));
+      updateCarousel();
+    }
+
+    // MODIFICACIÓN: Eventos para los dots
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => goTo(i));
+    });
+
+    window.addEventListener('resize', () => {
+      updateItemsPerView();
+      goTo(current);
+    });
+    updateItemsPerView();
+    goTo(0);
+  })();
 });

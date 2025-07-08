@@ -201,6 +201,12 @@ header nav ul li a:hover {
 main {
     padding: 2rem 3rem;
 }
+
+@media (min-width: 1600px) {
+   main {
+        max-width: 1900px;
+   }
+}
 @media (min-width: 1025px) {
     main {
         max-width: 1200px;
@@ -315,11 +321,11 @@ main section {
     .home-image {
         width: 80%;
         margin: auto;
+        
     }
 }
 
-.home-image-before,
-.home-image-after {
+.home-image-before {
     position: absolute;
     z-index: -99;
     width: 80%;
@@ -329,10 +335,23 @@ main section {
     left: -45%;
 }
 
+
+.home-image-after {
+    position: absolute;
+    z-index: -9;
+    width: 75%;
+    height: 60%;
+    border-radius: 25% 50%;
+    background-color: #d0f1d5;
+    right: -10%;
+    top: 50%;
+}
+/* 
 .home-image-after {
     right: -10%;
     top: 25%;
 }
+
 @media (min-width: 1300px) {
     .home-image-after {
         right: -30%;
@@ -344,7 +363,7 @@ main section {
         right: -40%;
         top: 20%;
     }
-}
+} */
 
 /* Services section */
 #featured-services {
@@ -416,12 +435,12 @@ main section {
 }
 
 .featured-services-item img {
-    width: 5rem;
-    filter: invert(1);
+    width: 4rem;
+    filter: invert(0.95);    
 }
 
 .featured-services-item h3 {
-    font-size: 2rem;
+    font-size: 1.75rem;
     margin-bottom: 0.5rem;
     color: #fff;
 }
@@ -435,6 +454,58 @@ main section {
     font-size: 1rem;
     line-height: 1.5;
     color: var(--text-light);
+    text-align: justify;
+}
+
+.featured-services-carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background: var(--button-black);
+  border-radius: 2rem;
+  padding: 2rem 0 2rem 0;
+}
+
+.featured-services-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+  will-change: transform;
+}
+
+/* MODIFICACIÓN: Siempre mostrar 2 items por vez en todos los tamaños */
+.featured-services-item {
+  min-width: 50%; /* MODIFICACIÓN */
+  max-width: 50%; /* MODIFICACIÓN */
+  flex: 0 0 50%;  /* MODIFICACIÓN */
+  box-sizing: border-box;
+  padding: 0 2rem;
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* MODIFICACIÓN: estilos para los puntos del carrusel */
+.carousel-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  opacity: 0.4;
+  border: none;
+  margin: 0 6px;
+  cursor: pointer;
+  transition: opacity 0.2s, background 0.2s;
+  display: inline-block;
+}
+.carousel-dot.active {
+  background: var(--accent);
+  opacity: 1;
 }
 
 /* Audience section */
@@ -504,6 +575,7 @@ main section {
     left: -55%;
     top: 10%;
 }
+
 
 /* Contact section */
 #contact {
@@ -622,7 +694,7 @@ footer {
 }
 @media (min-width: 1600px) {
     .footer-top {
-        width: 60%;
+        width: 90%;
     }
 }
 @media (max-width: 520px) {
@@ -650,8 +722,11 @@ footer {
 .footer-center {
     display: flex;
     justify-content: space-between;
+    
 }
-@media (max-width: 1024px) {
+
+
+@media (max-width: 767px) {
     .footer-center {
         flex-direction: column;
         gap: 2rem;
@@ -661,19 +736,45 @@ footer {
 .footer-left {
     display: flex;
     width: 100%;
-    flex-grow: 1;
     flex-direction: column;
     gap: 2rem;
     text-align: left;
 }
 
+@media (max-width: 767px) {
+    .footer-left {
+        align-items: center;
+        gap: 3rem
+    }
+}
+
 .footer-left ul {
     display: flex;
     flex-direction: row;
-    justify-content: start;
     gap: 1rem;
     width: 25%;
 }
+
+@media (min-width:1025px) {
+    .footer-left ul {
+        width: 22.5%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 800px) {
+    .footer-left ul {
+        width: 40%;
+    }
+}
+
+@media (min-width: 801px) and (max-width: 1024px) {
+    .footer-left ul {
+        width: 30%;
+    }
+}
+
+
+
 
 .footer-left li a img {
     filter: invert(.6);
@@ -684,11 +785,14 @@ footer {
 }
 
 .footer-right {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
+    width: 100%;   
     text-align: right;
+}
+
+@media (max-width: 767px) {
+    .footer-right {
+        text-align: center;
+    }
 }
 
 .footer-bottom {
@@ -707,6 +811,7 @@ footer {
         padding-top: 2rem;
     }
 }
+
 
 .hamburger {
     display: none;

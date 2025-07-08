@@ -82,6 +82,7 @@
           <a href="#contact" class="button-black">Contact</a>
         </div>
         <div class="home-image">
+          <div class="floating-div">
           <img
             class="home-image-before"
             src="img/figure-01-bg-1.png"
@@ -90,95 +91,98 @@
             aria-hidden="true"
           />
           <img src="img/figure-01.webp" alt="Home Image" loading="lazy" />
-          <img
-            class="home-image-after"
-            src="img/figure-01-bg-2.png"
-            alt="Decorative background"
-            loading="lazy"
-            aria-hidden="true"
-          />
+          
+            <div class="home-image-after"></div>
+          </div>
+       
         </div>
       </section>
 
       <section id="featured-services">
         <div class="featured-services-header">
-  
           <h2>Featured Services</h2>
         </div>
-        <div class="featured-services-container">
-          <article class="featured-services-item">
-            <img
-              src="img/feat_serv_02.svg"
-              alt="Brand Identity & Graphic Design icon"
-              role="img"
-              aria-label="Brand Identity & Graphic Design"
-              loading="lazy"
-            />
-            <h3>Brand Identity & Graphic Design</h3>
-            <p>
-              We shape the visual identity of your business from scratch. From logo design
-              and brand guidelines to POP materials — everything you need to promote your
-              business consistently, professionally, and memorably.
-            </p>
-          </article>
-          <article class="featured-services-item">
-            <img
-              src="img/feat_serv_03.svg"
-              alt="Custom Web Design icon"
-              role="img"
-              aria-label="Custom Web Design"
-              loading="lazy"
-            />
-            <h3>Custom Web Design</h3>
-            <p>
-              We build websites aligned with your brand identity and business goals.
-              Modern, responsive, and designed to turn visitors into customers.
-            </p>
-          </article>
-          <article class="featured-services-item">
-            <img
-              src="img/feat_serv_04.svg"
-              alt="Development & Optimization icon"
-              role="img"
-              aria-label="Development & Optimization"
-              loading="lazy"
-            />
-            <h3>Development & Optimization</h3>
-            <p>
-              We boost your site with the latest technology, fast loading speeds, basic
-              SEO structure, and a user experience that’s clear, functional, and
-              intuitive.
-            </p>
-          </article>
-          <article class="featured-services-item">
-            <img
-              src="img/feat_serv_05.svg"
-              alt="Support & Scalability icon"
-              role="img"
-              aria-label="Support & Scalability"
-              loading="lazy"
-            />
-            <h3>Support & Scalability</h3>
-            <p>
-              24/7 maintenance with minor updates included at no extra cost. Your website
-              stays up-to-date, secure, and ready to grow with your business.
-            </p>
-          </article>
-          <article class="featured-services-item">
-            <img
-              src="img/feat_serv_06.svg"
-              alt="Professional Business Email icon"
-              role="img"
-              aria-label="Professional Business Email"
-              loading="lazy"
-            />
-            <h3>Professional Business Email</h3>
-            <p>
-              We set up personalized email accounts (yourname@yourcompany.com) with full
-              web and mobile access — reinforcing your brand's professionalism from the
-              very first contact.
-            </p>
-          </article>
+        <div class="featured-services-carousel">
+          <div class="featured-services-track">
+            <article class="featured-services-item">
+              <img
+                src="img/feat_serv_02.svg"
+                alt="Brand Identity & Graphic Design icon"
+                role="img"
+                aria-label="Brand Identity & Graphic Design"
+                loading="lazy"
+              />
+              <h3>Brand Identity & Graphic Design</h3>
+              <p>
+                We shape the visual identity of your business from scratch. From logo design
+                and brand guidelines to POP materials — everything you need to promote your
+                business consistently, professionally, and memorably.
+              </p>
+            </article>
+            <article class="featured-services-item">
+              <img
+                src="img/feat_serv_03.svg"
+                alt="Custom Web Design icon"
+                role="img"
+                aria-label="Custom Web Design"
+                loading="lazy"
+              />
+              <h3>Custom Web Design</h3>
+              <p>
+                We build websites aligned with your brand identity and business goals.
+                Modern, responsive, and designed to turn visitors into customers.
+              </p>
+            </article>
+            <article class="featured-services-item">
+              <img
+                src="img/feat_serv_04.svg"
+                alt="Development & Optimization icon"
+                role="img"
+                aria-label="Development & Optimization"
+                loading="lazy"
+              />
+              <h3>Development & Optimization</h3>
+              <p>
+                We boost your site with the latest technology, fast loading speeds, basic
+                SEO structure, and a user experience that’s clear, functional, and
+                intuitive.
+              </p>
+            </article>
+            <article class="featured-services-item">
+              <img
+                src="img/feat_serv_05.svg"
+                alt="Support & Scalability icon"
+                role="img"
+                aria-label="Support & Scalability"
+                loading="lazy"
+              />
+              <h3>Support & Scalability</h3>
+              <p>
+                24/7 maintenance with minor updates included at no extra cost. Your website
+                stays up-to-date, secure, and ready to grow with your business.
+              </p>
+            </article>
+            <article class="featured-services-item">
+              <img
+                src="img/feat_serv_06.svg"
+                alt="Professional Business Email icon"
+                role="img"
+                aria-label="Professional Business Email"
+                loading="lazy"
+              />
+              <h3>Professional Business Email</h3>
+              <p>
+                We set up personalized email accounts (yourname@yourcompany.com) with full
+                web and mobile access — reinforcing your brand's professionalism from the
+                very first contact.
+              </p>
+            </article>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-dot" data-index="0" aria-label="Ver artículos 1 y 2"></button>
+            <button class="carousel-dot" data-index="1" aria-label="Ver artículos 2 y 3"></button>
+            <button class="carousel-dot" data-index="2" aria-label="Ver artículos 4 y 5"></button>
+          </div>
         </div>
       </section>
       <section id="audience-identification">
@@ -259,7 +263,8 @@
           <div class="footer-left">
             <p>
               We believe in ideas that grow, projects that evolve, and brands that are
-              ready to take the next step. At StepUp, we're here to help them rise.
+              ready to take the next step. <br/>
+              At StepUp, we're here to help them rise.
             </p>
 
             <ul>
@@ -302,12 +307,13 @@
             </ul>
           </div>
           <div class="footer-right">
-            <p>Have a project in mind? Book a call and let’s bring it to life!</p>
+            <p>Have a project in mind? <br />
+              Book a call and let’s bring it to life!</p>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© <span class="js-current-year"></span> -- StepUp. All rights reserved.</p>
+        <p>© <span class="js-current-year"></span> -- Step Up. All rights reserved.</p>
       </div>
     </footer>
   </body>
