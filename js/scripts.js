@@ -111,5 +111,51 @@ document.addEventListener("DOMContentLoaded", function () {
     updateItemsPerView();
     renderDots();
     goTo(0);
+
+    // --- MODIFICACIÓN: Soporte para swipe táctil en el carrusel ---
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+    let threshold = 50; // Mínima distancia en px para considerar swipe
+
+    // Inicia el seguimiento del toque
+    track.addEventListener('touchstart', function (e) {
+      if (e.touches.length !== 1) return;
+      startX = e.touches[0].clientX;
+      currentX = startX;
+      isDragging = true;
+      // Desactiva la transición para feedback inmediato
+      track.style.transition = 'none';
+    });
+
+    // Actualiza la posición mientras se arrastra
+    track.addEventListener('touchmove', function (e) {
+      if (!isDragging) return;
+      currentX = e.touches[0].clientX;
+      const deltaX = currentX - startX;
+      // Mueve el track visualmente mientras se arrastra
+      const offset = current * (100 / itemsPerView) - (deltaX / track.offsetWidth) * 100;
+      track.style.transform = `translateX(-${offset}%)`;
+    });
+
+    // Finaliza el swipe y navega si corresponde
+    track.addEventListener('touchend', function (e) {
+      if (!isDragging) return;
+      isDragging = false;
+      track.style.transition = '';
+      const deltaX = currentX - startX;
+      if (Math.abs(deltaX) > threshold) {
+        if (deltaX < 0 && current < totalDots - 1) {
+          goTo(current + 1); // Swipe izquierda: siguiente
+        } else if (deltaX > 0 && current > 0) {
+          goTo(current - 1); // Swipe derecha: anterior
+        } else {
+          goTo(current); // Rebote si no hay más slides
+        }
+      } else {
+        goTo(current); // Rebote si swipe muy corto
+      }
+    });
+    // --- FIN MODIFICACIÓN SWIPE ---
   })();
 });
